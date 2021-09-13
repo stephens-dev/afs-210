@@ -1,39 +1,40 @@
 class Node:
- 
-    def __init__(self, data):
-        self.data = data  
-        self.next = None  
- 
- 
-class LinkedList:
- 
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+
+class singlyLinkedList:
     def __init__(self):
         self.head = None
- 
-    
-    def printList(self):
-        temp = self.head
-        while (temp):
-            print (temp.data)
-            temp = temp.next
- 
- 
+        self.tail = None
+        self.count = 0
 
-if __name__=='__main__':
- 
-    
-    llist = LinkedList()
- 
-    llist.head = Node('PHP')
-    second = Node('Python')
-    third = Node('C#')
-    fourth = Node('C++')
-    fifth = Node('Java')
- 
-    llist.head.next = second; 
-    second.next = third; 
-    third.next = fourth
-    fourth.next = fifth
+    def iterateItem(self):
+        currentItem = self.head
+        while currentItem:
+            val = currentItem.data
+            currentItem = currentItem.next
+            yield val
 
- 
-    llist.printList()
+    def appendItem(self, data):
+        node = Node(data)
+        if self.tail:
+            self.tail.next = node
+            self.tail = node
+        else:
+            self.head = node
+            self.tail = node
+        self.count += 1
+
+
+items = singlyLinkedList()
+items.appendItem('PHP')
+items.appendItem('Python')
+items.appendItem('C#')
+items.appendItem('C++')
+items.appendItem('Java')
+
+for val in items.iterateItem():
+    print(val)
+print("\nhead.data: ",items.head.data)
+print("tail.data: ",items.tail.data)
