@@ -1,7 +1,13 @@
 
+from _typeshed import HasFileno
+from typing import Sized
+
+
 def Ordered_binary_Search(olist, item):
-    # This function is to divide and conqure by starting with the first 
-    # then middle of the sorted lists until the item if found or not
+    # This function is to divide and conqure by checking if the value is 
+    # bigger than the left half or smaller than the right and sending that Half
+    # to the other function in order to save time
+    
     if len(olist) == 0:
         return False
     else:
@@ -16,8 +22,9 @@ def Ordered_binary_Search(olist, item):
 
 
 def binarySearch(alist, item):
-    # This function is to organize the list by slitting it into
-    # smallest to largest
+    # This block of code will will continue to move the midpoint and the last point 
+    # to narrow into the value until it is found or the first point is on the right Side 
+    # of the last point
     first = 0
     last = len(alist) - 1
     found = False

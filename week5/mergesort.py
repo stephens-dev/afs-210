@@ -9,8 +9,8 @@ def mergeSort(nlist):
         mergeSort(lefthalf)
         mergeSort(righthalf)
         i=j=k=0       
-        # This part is seeing which of the numbers are smaller
-        # or larger and merging them into the main list
+        # This splits the items and merges them back together is stages like the 
+        # video from class by merging while sorting 
         while i < len(lefthalf) and j < len(righthalf):
             if lefthalf[i] < righthalf[j]:
                 nlist[k]=lefthalf[i]
