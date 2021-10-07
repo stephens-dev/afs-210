@@ -1,8 +1,13 @@
 import time
 import random
-
+Scount = 0
+Lcount = 0
+Mcount = 0
+Rcount = 0
 def quick_sort(a_list, start, end):
     # list size is 1 or less (which doesn't make sense)
+    global Scount 
+    Scount += 1
     if start >= end:
         return
 
@@ -34,6 +39,8 @@ def partition_last(arr, low, high):
     return (i+1)
     
 def quicksort_last(arr, low, high):
+     global Lcount
+     Lcount += 1
      if len(arr) == 1:
         return arr
      if low < high:
@@ -71,6 +78,8 @@ def partition_middle(nums, low, high):
 
     # Create a helper function that will be called recursively
 def quicksort_middle(items, low, high):
+    global Mcount
+    Mcount += 1
     if low < high:
         # This is the index after the pivot, where our lists are split
         split_index = partition_middle(items, low, high)
@@ -145,6 +154,8 @@ def partition_random(array, start, end):
     return high
 
 def quicksort_random(array, start, end):
+    global Rcount
+    Rcount += 1
     if start >= end:
         return
 
@@ -170,25 +181,25 @@ start_time = time.time()
 quick_sort(myList,0,len(myList)-1)
 end_time = time.time()
 # print(myList)   
-print(f"Start pivot time is: {end_time-start_time}")
+print(f"Start pivot time is: {end_time-start_time}\n The count is: {Scount}")
 print()
 
 start_time = time.time()
 quicksort_last(myList1,0,len(myList1)-1)
 end_time = time.time()
 # print(myList1)   
-print(f"Last pivot time is: {end_time-start_time}")
+print(f"Last pivot time is: {end_time-start_time}\n The count is: {Lcount}")
 print()
 
 start_time = time.time()
 quicksort_middle(myList2,0,len(myList2)-1)
 end_time = time.time()
 # print(myList2)   
-print(f"Middle pivot time is: {end_time-start_time}")
+print(f"Middle pivot time is: {end_time-start_time}\n The count is: {Mcount}")
 print()
 
 start_time = time.time()
 quicksort_random(myList3,0,len(myList3)-1)
 end_time = time.time()
 # print(myList3)   
-print(f"Random pivot time is: {end_time-start_time}")
+print(f"Random pivot time is: {end_time-start_time}\n The count is: {Rcount}")
